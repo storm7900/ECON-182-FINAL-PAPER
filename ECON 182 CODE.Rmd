@@ -1,0 +1,52 @@
+---
+title: "ECON 182 Code"
+author: "Tuong Van"
+date: "2025-03-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#Loads up the two datasets, and slices out 2022-2024 for CN variable;EM is employment data
+EM<-read.csv("DATASET FOR ECON 182 FINAL.csv")
+FC<-read.csv("Full final results Econ 182.csv")
+CN<-FC[1:11,1:16]
+```
+
+1
+```{r}
+#Creates a graph of share of profit calculated by production workers, with a manually added axis and a dotted line at Q3 2023
+plot(FC$Share,type="l",xlab="Time", ylab="Percent Share of profit captured by workers", xaxt="n")
+axis(1,at=c(1,5,9,13,17,21,25,29,33,37,41,45,49,53,57,61,65,69),labels=c("2007", "2008", "2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"),las=2)
+abline(v=67,col="red",lty=2)
+```
+
+2
+```{r}
+#Same as graph above but with graph spanning from Q1 2022 to Q3 2024, and a blue line Q3 2023
+plot(CN$Share,type="l",xaxt="n",xlab="Time",ylab="Percant Share of profit captured by workers")
+axis(1,at=c(1,2,3,4,5,6,7,8,9,10,11),labels=c("2022Q1","2022Q2","2022Q3","2022Q4","2023Q1","2023Q2","2023Q3","2023Q4","2024Q1","2024Q2","2024Q3"))
+abline(v=7,col="blue",lty=2)
+```
+
+
+3
+```{r}
+#Same as graph 2 but with all subset of workers from BLS data rather than only production workers, and a blue line Q3 2023
+plot(CN$Profit.captured.by.all.workers, ,type="l",xaxt="n",xlab="Time",ylab="Percant Share of profit captured by workers")
+axis(1,at=c(1,2,3,4,5,6,7,8,9,10,11),labels=c("2022Q1","2022Q2","2022Q3","2022Q4","2023Q1","2023Q2","2023Q3","2023Q4","2024Q1","2024Q2","2024Q3"))
+abline(v=7,col="blue",lty=2)
+```
+
+
+4
+```{r}
+#Creates a graph of employment in thousands, with a salmon colored dotted line at Q1 2024 and ranging from Q1 2022 to Q3 2024
+plot(EM$EIT, type="l",xlab="Time",ylab = "Employment in thousands", xaxt="n")
+axis(1,at=c(1,2,3,4,5,6,7,8,9,10,11),labels=c("2022Q1","2022Q2","2022Q3","2022Q4","2023Q1","2023Q2","2023Q3","2023Q4","2024Q1","2024Q2","2024Q3"))
+abline(v=9,col="salmon", lty=2)
+```
+
